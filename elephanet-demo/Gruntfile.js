@@ -16,9 +16,13 @@ module.exports = function(grunt) {
     watch: {
       src: {
         files: '<%= files %>',
-	tasks: ['build']
+	      tasks: ['build']
       }
     },
+
+      exec: {
+          xbuild: 'xbuild'
+      },
 
 
     concat: {
@@ -46,9 +50,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-exec');
 
   // Default task(s).
 //  grunt.registerTask('default', ['uglify']);
-  grunt.registerTask('build', ['handlebars','concat']);
+    grunt.registerTask('build', ['handlebars','concat', 'exec']);
 
 };
