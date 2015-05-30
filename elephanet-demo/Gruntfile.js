@@ -10,6 +10,7 @@ module.exports = function(grunt) {
     kernels: 'js/kernels/*.js',
     template: 'js/build/templates.js',
     templates: 'js/templates/*.hbs',
+    views: 'views/*.html',
     application: 'js/app.js',
     files: ['<%= hb %>','<%= kernel %>','<%= template %>','<%= kernels %>', '<%= hubs %>', '<%= modules %>','<%= application %>'],
 
@@ -21,7 +22,9 @@ module.exports = function(grunt) {
     },
 
       exec: {
-          xbuild: 'xbuild'
+          xbuild: 'xbuild',
+          kill: "$(ps -aux | grep [e]lephanet-demo.exe | awk '{print $2}')",
+          restart: './bin/Debug/elephanet-demo.exe'
       },
 
 
@@ -36,7 +39,7 @@ module.exports = function(grunt) {
         options : {
           namespace: 'Handlebars',
 	  processName: function (filePath) {
-	    var filename = filePath.replace(/^.*[\\\/]/,'')	  
+	    var filename = filePath.replace(/^.*[\\\/]/,'')
 	    return filename.split('.')[0];
 	  }
 	},
