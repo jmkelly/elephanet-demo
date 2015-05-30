@@ -20,5 +20,3 @@
 
 var hub = Kernel.hub.get('toilets');
 hub.init();
-
-
